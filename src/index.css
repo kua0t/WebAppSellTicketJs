@@ -24,7 +24,9 @@
 body {
   background-color: var(--bg-100);
 }
-
+button {
+  cursor: pointer;
+}
 .header-container {
   background-color: var(--bg-200);
   padding-block: 15px;
@@ -123,7 +125,7 @@ body {
   font-size: 1.2rem;
   padding-top: 10px;
 }
-.home-section > ol > li {
+.home-section-li > li {
   color: var(--text-100);
   padding-top: 10px;
   margin-left: 55px;
@@ -153,10 +155,7 @@ h6 {
   background-color: var(--accent-200);
   cursor: pointer;
 }
-/* .ticketPurcharse {
-  display: grid;
-  grid-template-rows: 1fr;
-} */
+
 .numberCheck {
   display: flex;
   justify-content: center;
@@ -205,7 +204,7 @@ strong {
   padding-inline: 5px;
   border-radius: 5px;
 }
-.buttondiv button {
+.buttondiv input {
   background-color: #ffd700;
   border: 0;
   padding: 10px;
@@ -215,10 +214,391 @@ strong {
 }
 .buttondiv {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  gap: 20px 0;
   margin-block: 20px;
 }
+.buttondiv > input:last-child {
+  background-color: red;
+  color: var(--text-100);
+}
+.inputNumber {
+  outline: 0;
+  height: 25px;
+  border-radius: 5px;
+  border: 0;
+  padding-left: 5px;
+}
+.purcharse-section {
+  display: none;
+}
+.purcharse-section-active {
+  display: block;
+  width: 400px;
+  height: fit-content;
+  margin: auto;
+  border-radius: 20px;
+  padding: 10px;
+  background-color: var(--bg-300);
+  position: absolute;
+  top: 40%;
+  bottom: 10%;
+  left: 25%;
+  right: 25%;
+}
+.headerText > h1 {
+  color: var(--text-100);
+  text-align: center;
+}
+.headerText > p {
+  color: rgb(163, 162, 162);
+  text-align: center;
+  margin-bottom: 10px;
+}
+.headerText {
+  border-bottom: 1px solid white;
+}
+
+.buy-section {
+  display: none;
+}
+.buy-section-active {
+  display: block;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 20px;
+  padding: 10px;
+  background-color: var(--bg-300);
+  position: absolute;
+  top: 25%;
+  bottom: 25%;
+  left: 25%;
+  right: 25%;
+}
+.buy-section-active > h1 {
+  color: var(--text-100);
+  text-align: center;
+  border-bottom: 1px solid white;
+}
+.buy-section-active > p:first-of-type {
+  color: var(--text-100);
+  font-size: 1.2rem;
+  padding-top: 10px;
+}
+.buy-section-active > h4:first-of-type {
+  color: var(--text-100);
+  font-size: 1.3rem;
+  padding: 10px 0 0 15px;
+}
+.buy-section-active > h4 {
+  color: var(--text-200);
+  font-size: 1.3rem;
+  padding: 10px 0 0 30px;
+}
+.buy-section-active > h4:last-of-type {
+  color: var(--text-200);
+  font-size: 1.3rem;
+  padding: 10px 0 0 15px;
+}
+.payInfo h6 {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+.totalPrice {
+  color: var(--text-100);
+  font-size: 1.4rem;
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+  text-align: end;
+  margin-top: 20px;
+  padding: 10px 0;
+}
+.TermsInfo {
+  text-align: center;
+}
+.TermsInfo > h6 {
+  text-align: center;
+  font-size: 1.1rem;
+}
+.TermsInfo > a {
+  font-size: 0.9rem;
+  color: gray;
+}
+.actionsContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.actionsContainer > button {
+  padding: 10px;
+  border: 0;
+  outline: 0;
+  color: var(--text-100);
+  border-radius: 5px;
+}
+.actionsContainer > button:last-of-type {
+  background-color: green;
+}
+.actionsContainer > button:first-of-type {
+  background-color: red;
+}
+.payMethod-active {
+  display: block;
+  width: 400px;
+  height: 400px;
+  border-radius: 20px;
+  margin: auto;
+  padding: 10px;
+  background-color: var(--bg-300);
+  position: absolute;
+  top: 25%;
+  bottom: 25%;
+  left: 25%;
+  right: 25%;
+}
+.payMethod-active > h2 {
+  color: var(--text-100);
+  text-align: center;
+}
+.payMethodBtn {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  width: 100%;
+  padding-block: 45px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid white;
+}
+.payMethodBtn > img {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+}
+.actionsContainerPayMethod {
+  display: flex;
+  justify-content: center;
+}
+.actionsContainerPayMethod > button {
+  padding: 10px;
+  border: 0;
+  outline: 0;
+  color: var(--text-100);
+  border-radius: 5px;
+  background-color: red;
+}
+.payMethod {
+  display: none;
+}
+.payMethod-active {
+  display: block;
+  width: 400px;
+  height: 400px;
+  border-radius: 20px;
+  margin: auto;
+  padding: 10px;
+  background-color: var(--bg-300);
+  position: absolute;
+  top: 25%;
+  bottom: 25%;
+  left: 25%;
+  right: 25%;
+}
+.infoPay-active > h2 {
+  text-align: center;
+  color: var(--text-100);
+  margin-bottom: 20px;
+}
+.infoPay-active {
+  display: block;
+  width: 400px;
+  height: fit-content;
+  border-radius: 20px;
+  margin: auto;
+  padding: 10px;
+  background-color: var(--bg-300);
+  position: absolute;
+  top: 25%;
+  bottom: 25%;
+  left: 25%;
+  right: 25%;
+}
+.formContainer {
+  display: grid;
+  justify-content: center;
+}
+label {
+  color: var(--text-100);
+  font-size: 0.9rem;
+}
+.formContainer > input[type="text"],
+.formContainer > input[type="email"] {
+  border: 0;
+  width: 250px;
+  height: 30px;
+  padding-left: 5px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+input[type="submit"] {
+  cursor: pointer;
+}
+.formContainer > input[type="submit"] {
+  width: 200px;
+  margin: 20px auto;
+  height: 50px;
+  border-radius: 5px;
+  outline: 0;
+  border: 0;
+  background-color: green;
+  color: var(--text-100);
+}
+.actionsContainerCheck {
+  display: flex;
+  justify-content: space-between;
+  border-top: 2px solid white;
+  padding-top: 20px;
+}
+.actionsContainerCheck > button {
+  padding: 10px;
+  border: 0;
+  outline: 0;
+  color: var(--text-100);
+  border-radius: 5px;
+}
+.actionsContainerCheck > button:last-of-type {
+  background-color: rgb(0, 102, 255);
+}
+.actionsContainerCheck > button:first-of-type {
+  background-color: red;
+}
+.infoPay {
+  display: none;
+}
+.buyingAction-active {
+  display: block;
+  width: 60%;
+  height: fit-content;
+  border-radius: 20px;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: var(--bg-300);
+  position: absolute;
+  top: 0%;
+  bottom: 0%;
+  left: 25%;
+  right: 25%;
+  color: var(--text-100);
+}
+.buyingAction-active > h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  border-bottom: 1px solid white;
+}
+.infoPayment {
+  text-align: center;
+}
+.infoPayment > P:last-child {
+  text-align: center;
+  font-size: 2rem;
+  border-bottom: 1px solid white;
+  margin-bottom: 10px;
+}
+
+.paymentData > p,
+h3,
+h4,
+h5 {
+  text-align: center;
+  margin: 5px 0;
+}
+.paymentData h3 {
+  font-size: 1.3rem;
+}
+.paymentData h2 {
+  font-size: 1.5rem;
+  background-color: green;
+  width: fit-content;
+  margin: 20px auto;
+  padding-inline: 10px;
+  border-radius: 5px;
+}
+.FormPayment > h2 {
+  font-size: 1.5rem;
+  background-color: green;
+  width: fit-content;
+  margin: 20px auto;
+  padding-inline: 10px;
+  border-radius: 5px;
+}
+.UploadPaymentData {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.UploadPaymentData > input[type="text"],
+.UploadPaymentData > input[type="date"] {
+  border: 0;
+  width: 250px;
+  height: 30px;
+  padding-left: 5px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.UploadPaymentData > input[type="file"] {
+  margin: 15px 0;
+}
+.UploadPaymentData > input[type="submit"] {
+  width: 200px;
+  margin: 20px auto;
+  height: 50px;
+  border-radius: 5px;
+  outline: 0;
+  border: 0;
+  background-color: green;
+  color: var(--text-100);
+  font-size: 1.2rem;
+}
+.sectionContainer {
+  height: fit-content;
+}
+.buyingAction {
+  display: none;
+}
 @media (max-width: 768px) {
+  .numberCheck > button {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    bottom: 28%;
+  }
+  .numberCheck > button:first-of-type {
+    left: 50%;
+  }
+  .numberCheck > button:last-of-type {
+    right: 50%;
+  }
+  .numberCheck > input {
+    margin: 40px 0 50px 0;
+  }
+  .buy-section-active > h1 {
+    font-size: 1.2rem;
+  }
+  .buy-section-active {
+    display: block;
+    width: 50%;
+    height: fit-content;
+    border-radius: 20px;
+    background-color: var(--bg-300);
+    position: absolute;
+    top: 25%;
+    bottom: 25%;
+    left: 25%;
+    right: 25%;
+  }
   .menu-icon {
     display: block;
   }
@@ -264,5 +644,26 @@ strong {
     font-size: 1.4rem;
     color: white;
     text-align: right;
+  }
+}
+@media (max-width: 425px) {
+  .numberCheck > input {
+    width: 100px;
+    text-align: center;
+  }
+}
+@media (max-width: 375px) {
+  .numberCheck > button:first-of-type,
+  .numberCheck > button:last-of-type {
+    border: 0;
+    width: 30px;
+    height: 25px;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+  }
+  .numberCheck > button {
+    bottom: 25%;
   }
 }
