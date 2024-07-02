@@ -243,10 +243,10 @@ strong {
   padding: 10px;
   background-color: var(--bg-300);
   position: absolute;
-  top: 40%;
-  bottom: 10%;
-  left: 25%;
-  right: 25%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 .headerText > h1 {
   color: var(--text-100);
@@ -343,20 +343,7 @@ strong {
 .actionsContainer > button:first-of-type {
   background-color: red;
 }
-.payMethod-active {
-  display: block;
-  width: 400px;
-  height: 400px;
-  border-radius: 20px;
-  margin: auto;
-  padding: 10px;
-  background-color: var(--bg-300);
-  position: absolute;
-  top: 25%;
-  bottom: 25%;
-  left: 25%;
-  right: 25%;
-}
+
 .payMethod-active > h2 {
   color: var(--text-100);
   text-align: center;
@@ -394,18 +381,20 @@ strong {
 }
 .payMethod-active {
   display: block;
-  width: 400px;
-  height: 400px;
+  height: fit-content;
+  min-width: 250px;
+  width: 50%;
   border-radius: 20px;
-  margin: auto;
   padding: 10px;
   background-color: var(--bg-300);
   position: absolute;
-  top: 25%;
-  bottom: 25%;
-  left: 25%;
-  right: 25%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
 }
+
 .infoPay-active > h2 {
   text-align: center;
   color: var(--text-100);
@@ -413,17 +402,13 @@ strong {
 }
 .infoPay-active {
   display: block;
-  width: 400px;
+  width: 100%;
   height: fit-content;
   border-radius: 20px;
-  margin: auto;
   padding: 10px;
   background-color: var(--bg-300);
   position: absolute;
-  top: 25%;
-  bottom: 25%;
-  left: 25%;
-  right: 25%;
+  top: 0;
 }
 .formContainer {
   display: grid;
@@ -479,17 +464,14 @@ input[type="submit"] {
 }
 .buyingAction-active {
   display: block;
-  width: 60%;
+  width: 100%;
   height: fit-content;
   border-radius: 20px;
-  margin: 20px auto;
   padding: 10px;
   background-color: var(--bg-300);
   position: absolute;
   top: 0%;
   bottom: 0%;
-  left: 25%;
-  right: 25%;
   color: var(--text-100);
 }
 .buyingAction-active > h2 {
@@ -573,7 +555,7 @@ h5 {
     position: absolute;
     justify-content: center;
     align-items: center;
-    bottom: 28%;
+    bottom: 40%;
   }
   .numberCheck > button:first-of-type {
     left: 50%;
@@ -581,6 +563,7 @@ h5 {
   .numberCheck > button:last-of-type {
     right: 50%;
   }
+
   .numberCheck > input {
     margin: 40px 0 50px 0;
   }
@@ -651,6 +634,9 @@ h5 {
     width: 100px;
     text-align: center;
   }
+  .purcharse-section-active {
+    width: 80%;
+  }
 }
 @media (max-width: 375px) {
   .numberCheck > button:first-of-type,
@@ -664,6 +650,15 @@ h5 {
     cursor: pointer;
   }
   .numberCheck > button {
-    bottom: 25%;
+    bottom: 35%;
+  }
+}
+@media (max-width: 553px) {
+  .numberCheck > button {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    bottom: 36%;
   }
 }

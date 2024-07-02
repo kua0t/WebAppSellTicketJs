@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import WhatsappBtn from "./WhatsappBtn";
 import mpIcon from "../assets/mp.png";
 
@@ -8,14 +8,41 @@ export default function Section() {
   const [Purcharse, setPurcharse] = useState(false);
   const [payMethod, setPayMethod] = useState(false);
   const [InfoPay, setInfoPay] = useState(false);
-  const [buyingAction, setBuyingAction] = useState(true);
+  const [buyingAction, setBuyingAction] = useState(false);
 
+  const [timeLeft, setTimeLeft] = useState(900); // 900 segundos = 15 minutos
+
+  // 15m functionality with hooks
+  useEffect(() => {
+    if (!buyingAction) return;
+
+    const intervalId = setInterval(() => {
+      setTimeLeft((prevTime) => {
+        if (prevTime <= 1) {
+          clearInterval(intervalId);
+          setBuyingAction(false);
+          return 0;
+        }
+        return prevTime - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, [buyingAction]);
+
+  //formateo de tiempo para mostrar
+
+  const formatTime = (seconds) => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
+  };
+
+  // hardcode values
   const ticketValue = 14;
-
-  const timer = "15:00";
-
   const finalPrice = Count * ticketValue;
 
+  // changeNumbers funcs
   function addNumber() {
     setCount(Count + 1);
   }
@@ -23,6 +50,7 @@ export default function Section() {
     setCount(Count - 1);
   }
 
+  // change inputValue escribiendo o con las funciones
   const handleChange = (event) => {
     const value = parseInt(event.target.value, 10);
     if (!isNaN(value)) {
@@ -31,6 +59,8 @@ export default function Section() {
       setCount(0);
     }
   };
+
+  // ventanas emergentes
   function buyButton() {
     setFirstStep(true);
   }
@@ -63,6 +93,16 @@ export default function Section() {
     setPurcharse(true);
     setFirstStep(false);
   }
+
+  // abre ventana final y detiene el refresh de pagina
+  const FinalStep = (event) => {
+    event.preventDefault();
+
+    setInfoPay(false);
+    setBuyingAction(true);
+  };
+
+  // ventanas emergentes
 
   return (
     <>
@@ -104,9 +144,11 @@ export default function Section() {
           <h6>📅Fecha del sorteo:</h6>
           <p>17-06-2024</p>
 
-          <button className="purcharse" onClick={buyButton}>
-            Comprar Boletos
-          </button>
+          <a href="#top">
+            <button className="purcharse" onClick={buyButton}>
+              Comprar Boletos
+            </button>
+          </a>
         </div>
 
         <div className={FirstStep ? "buy-section-active" : "buy-section"}>
@@ -159,6 +201,7 @@ export default function Section() {
             <button onClick={ChoosePayMethod}>Continuar</button>
           </div>
         </div>
+
         <div className={payMethod ? "payMethod-active" : "payMethod"}>
           <h2>Seleccione un metodo de pago</h2>
           <button className="payMethodBtn" onClick={payMethodSelected}>
@@ -168,13 +211,14 @@ export default function Section() {
             <button onClick={CancelPurcharse}>Cancelar</button>
           </div>
         </div>
+
         <div className={InfoPay ? "infoPay-active" : "infoPay"}>
           <div className="headerText">
             <h1>Toyota corolla 2024 0km y 2 motos ek outlook 2024 0km</h1>
             <p>Fecha del Sorteo: 2024-06-17</p>
           </div>
           <h2>Datos del comprador</h2>
-          <form action="" className="formContainer">
+          <form action="" className="formContainer" onSubmit={FinalStep}>
             <label for="name">Nombre Completo del Comprador:</label>
             <input type="text" name="name" id="name" required />
 
@@ -187,13 +231,14 @@ export default function Section() {
             <label for="phone">Numero de telefono:</label>
             <input type="text" name="phone" required />
 
-            <input type="submit" value={"Proceder con el pago"} />
+            <input type="submit" />
           </form>
           <div className="actionsContainerCheck">
             <button onClick={CancelPurcharse}>Cancelar</button>
             <button onClick={backStep}>Regresar</button>
           </div>
         </div>
+
         <div className={buyingAction ? "buyingAction-active" : "buyingAction"}>
           <div className="headerText">
             <h1>Toyota corolla 2024 0km y 2 motos ek outlook 2024 0km</h1>
@@ -209,7 +254,7 @@ export default function Section() {
               Debe realizar el pago desde el banco de su preferencia en los
               siguientes
             </p>
-            <p>{timer}</p>
+            <p>{formatTime(timeLeft)}</p>
           </div>
           <div className="paymentData">
             <p>
